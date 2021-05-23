@@ -23,7 +23,7 @@ import {TemplateResult} from "lit-html";
 import {CSS_Global} from "../styles/ConstructibleStyleSheets";
 import tippy from "tippy.js";
 import { format as formatDate, parseISO } from "date-fns"
-import { fr } from 'date-fns/locale'
+import { sv } from 'date-fns/locale'
 
 type LieuCliqueContext = {lieu: Lieu};
 export type LieuCliqueCustomEvent = CustomEvent<LieuCliqueContext>;
@@ -84,16 +84,16 @@ export class VmdAppointmentCardComponent extends LitElement {
                 if(typeLieu === 'inactif-via-plateforme') {
                     specificCardConfig = {
                         disabledBG: true,
-                        libelleDateAbsente: 'Aucun rendez-vous',
-                        libelleBouton: 'Vérifier le centre de vaccination',
+                        libelleDateAbsente: 'Inga vaccintider',
+                        libelleBouton: 'Kolla på mottagningssidan',
                         typeBouton: 'btn-info',
                         onclick: () => this.verifierRdv()
                     };
                 } else {
                     specificCardConfig = {
                         disabledBG: false,
-                        libelleDateAbsente: 'Date inconnue',
-                        libelleBouton: 'Prendre rendez-vous',
+                        libelleDateAbsente: 'Okänt datum',
+                        libelleBouton: 'Boka en tid',
                         typeBouton: 'btn-primary',
                         onclick: () => this.prendreRdv()
                     };
@@ -113,7 +113,7 @@ export class VmdAppointmentCardComponent extends LitElement {
                       </a>
                       <div class="row align-items-center justify-content-center mt-3 text-gray-700">
                         <div class="col-auto text-description">
-                          ${this.lieu.appointment_count.toLocaleString()} créneau${Strings.plural(this.lieu.appointment_count, "x")}
+                          ${this.lieu.appointment_count.toLocaleString()} tid${Strings.plural(this.lieu.appointment_count, "er")}
                         </div>
                         ${this.lieu.plateforme?html`
                         |
@@ -133,14 +133,14 @@ export class VmdAppointmentCardComponent extends LitElement {
                     highlighted: false,
                     estCliquable: true,
                     disabledBG: false,
-                    libelleDateAbsente: 'Réservation tél uniquement',
+                    libelleDateAbsente: 'Bokning bara på telefon',
                     cardLink: (content) => html`
                           <a href="tel:${this.lieu.metadata.phone_number}">
                             ${content}
                           </a>`,
                     actions: html`
                           <a href="tel:${this.lieu.metadata.phone_number}" class="btn btn-tel btn-lg">
-                            Appeler le ${Strings.toNormalizedPhoneNumber(this.lieu.metadata.phone_number)}
+                            Ring ${Strings.toNormalizedPhoneNumber(this.lieu.metadata.phone_number)}
                           </a>
                         `
                 };
@@ -149,7 +149,7 @@ export class VmdAppointmentCardComponent extends LitElement {
                     highlighted: false,
                     estCliquable: false,
                     disabledBG: true,
-                    libelleDateAbsente: 'Aucun rendez-vous',
+                    libelleDateAbsente: 'Inga vaccintider',
                     cardLink: (content) => content,
                     actions: undefined
                 };
@@ -221,7 +221,7 @@ export class VmdAppointmentCardComponent extends LitElement {
 
     private cardTitle(cardConfig: any): string {
       if (this.lieu.prochain_rdv) {
-        return this.toTitleCase(formatDate(parseISO(this.lieu.prochain_rdv), "EEEE d MMMM 'à' HH:mm", { locale: fr }))
+        return this.toTitleCase(formatDate(parseISO(this.lieu.prochain_rdv), "EEEE d MMMM 'kl.'HH:mm", { locale: sv }))
       } else {
         return cardConfig.libelleDateAbsente
       }

@@ -57,13 +57,13 @@ export const TRIS_CENTRE: Map<CodeTriCentre, TriCentre> = new Map([
     ['date', { codeTriCentre: 'date', libelle: "Disponible au plus vite" }],
 ]);
 
-const USE_RAW_GITHUB = false
+const USE_RAW_GITHUB = true
 const VMD_BASE_URL = USE_RAW_GITHUB
-  ? "https://raw.githubusercontent.com/CovidTrackerFr/vitemadose/data-auto/data/output"
+  ? "https://raw.githubusercontent.com/civictechsweden/JagVillHaVaccin/master/"
   : "https://vitemadose.gitlab.io/vitemadose"
 
 
-export type TypePlateforme = "Doctolib"|"Maiia"|"Ordoclic"|"Keldoc"|"Pandalab"|"Mapharma"|"AvecMonDoc";
+export type TypePlateforme = "MittVaccin"|"1177"; //|"Doctolib"|"Maiia"|"Ordoclic"|"Keldoc"|"Pandalab"|"Mapharma"|"AvecMonDoc";
 export type Plateforme = {
     // Should be the same than PLATEFORMES' key
     code: TypePlateforme;
@@ -77,6 +77,11 @@ export type Plateforme = {
     styleCode: string;
 };
 export const PLATEFORMES: Record<TypePlateforme, Plateforme> = {
+    'MittVaccin': { code: 'MittVaccin', logo: 'logo_mittvaccin.png', nom: 'MittVaccin', promoted: true,  website: 'https://mittvaccin.se/',  styleCode: '_doctolib'},
+    '1177': { code: '1177', logo: 'logo_1177.png', nom: '1177', promoted: true,  website: 'https://1177.se/',  styleCode: '_doctolib'}
+};
+/*
+{
     'Doctolib': { code: 'Doctolib', logo: 'logo_doctolib.png', nom: 'Doctolib', promoted: true,  website: 'https://www.doctolib.fr/',  styleCode: '_doctolib'},
     'Maiia':    { code: 'Maiia',    logo: 'logo_maiia.png',    nom: 'Maiia',    promoted: true,  website: 'https://www.maiia.com/', styleCode: '_maiia'},
     'Ordoclic': { code: 'Ordoclic', logo: 'logo_ordoclic.png', nom: 'Ordoclic', promoted: true,  website: 'https://covid-pharma.fr/', styleCode: '_ordoclic'},
@@ -87,6 +92,7 @@ export const PLATEFORMES: Record<TypePlateforme, Plateforme> = {
     // Beware: if you add a new plateform, don't forget to update 'hardcoded' (indexable) content
     // in index.html page, referencing the list of supported plateforms
 };
+*/
 
 export type CodeDepartement = string;
 export type Departement = {
@@ -104,7 +110,7 @@ export const libelleUrlPathDuDepartement = (departement: Departement) => {
 
 export type TypeLieu = 'vaccination-center'|'drugstore'|'general-practitioner';
 export const TYPES_LIEUX: {[k in TypeLieu]: string} = {
-    "vaccination-center": 'Centre de vaccination',
+    "vaccination-center": 'Vaccinationsmottagning',
     "drugstore": 'Pharmacie',
     "general-practitioner": 'Médecin généraliste',
 };

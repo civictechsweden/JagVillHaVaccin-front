@@ -43,10 +43,7 @@ export class VmdAppComponent extends LitElement {
                     <div class="col">
                         <div class="row justify-content-end gx-5">
                             <div class="col-auto">
-                                <a href="${Router.basePath}apropos">À propos</a>
-                            </div>
-                            <div class="col-auto border-start">
-                                <a href="https://covidtracker.fr/" target="_blank" rel="noreferrer">CovidTracker&nbsp;<i class="bi vmdicon-arrow-up-right"></i></a>
+                                <a href="${Router.basePath}apropos">Om</a>
                             </div>
                         </div>
                     </div>
@@ -62,21 +59,8 @@ export class VmdAppComponent extends LitElement {
 
             <footer class="row justify-content-between">
                 <div class="col-auto">
-                    Vite Ma Dose&nbsp;! par CovidTracker -
-                    <a href="https://github.com/CovidTrackerFr/vitemadose-front/blob/main/LICENSE">(CC BY-NC-SA 4.0)</a>
-                </div>
-                <div class="col-auto">
-                    <div class="row">
-                        <div class="col-auto">
-                            <a href="https://covidtracker.fr/mentions-legales" target="_blank" rel="noreferrer">Mentions légales</a>
-                        </div>
-                        <div class="col-auto">
-                            <a href="https://covidtracker.fr/contact" target="_blank" rel="noreferrer">Contactez-nous</a>
-                        </div>
-                        <div class="col-auto">
-                            <a href="https://twitter.com/vitemadose_off" target="_blank" rel="noreferrer">Twitter</a>
-                        </div>
-                    </div>
+                    Jag vill ha vaccin! är skapat av <a href="https://twitter.com/PierreMesure" target="_blank" rel="noreferrer">Pierre Mesure</a> med kod från <a href="https://github.com/CovidTrackerFr/vitemadose-front">Vite Ma Dose</a> av CovidTracker -
+                    <a href="https://github.com/civictechsweden/vitemadose-front/blob/main/LICENSE">(CC BY-NC-SA 4.0)</a>
                 </div>
             </footer>
         `;

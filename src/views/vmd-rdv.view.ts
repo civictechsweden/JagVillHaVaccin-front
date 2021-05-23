@@ -19,7 +19,7 @@ import {
     TRIS_CENTRE
 } from "../state/State";
 import { formatDistanceToNow, parseISO } from 'date-fns'
-import { fr } from 'date-fns/locale'
+import { sv } from 'date-fns/locale'
 import {Strings} from "../utils/Strings";
 import {
     ValueStrCustomEvent,
@@ -103,10 +103,7 @@ export abstract class AbstractVmdRdvView extends LitElement {
             <div class="criteria-container text-dark rounded-3 pb-3 ${classMap({'bg-std': SearchRequest.isStandardType(this.currentSearch), 'bg-chronodose': SearchRequest.isChronodoseType(this.currentSearch)})}">
               <ul class="p-0 d-flex flex-row mb-5 bg-white fs-5">
                 <li class="col bg-std text-std tab ${classMap({selected: SearchRequest.isStandardType(this.currentSearch)})}" @click="${() => this.updateSearchTypeTo('standard')}">
-                  Tous les créneaux
-                </li>
-                <li class="col bg-chronodose text-chronodose tab ${classMap({selected: SearchRequest.isChronodoseType(this.currentSearch)})}" @click="${() => this.updateSearchTypeTo('chronodose')}">
-                  <span id="chronodose-label" title="Les chronodoses sont des doses de vaccin réservables à court terme sans critères d'éligibilité"><i class="bi vmdicon-lightning-charge-fill"></i>Chronodoses uniquement</span>
+                  Alla tider
                 </li>
               </ul>
               <div class="rdvForm-fields row align-items-center mb-3 mb-md-5">
@@ -129,23 +126,23 @@ export abstract class AbstractVmdRdvView extends LitElement {
                 <h3 class="fw-normal text-center h4 ${classMap({ 'search-chronodose': SearchRequest.isChronodoseType(this.currentSearch), 'search-standard': SearchRequest.isStandardType(this.currentSearch) })}"
                     style="${styleMap({display: (this.lieuxParDepartementAffiches) ? 'block' : 'none'})}">
                     ${SearchRequest.isChronodoseType(this.currentSearch)
-                        ? `${this.totalCreneaux.toLocaleString()} créneau${Strings.plural(this.totalCreneaux, "x")} chronodose${Strings.plural(this.totalCreneaux)} trouvé${Strings.plural(this.totalCreneaux)}`
-                        : `${this.totalCreneaux.toLocaleString()} créneau${Strings.plural(this.totalCreneaux, "x")} de vaccination trouvé${Strings.plural(this.totalCreneaux)}`
+                        ? `${this.totalCreneaux.toLocaleString()} lediga vaccintid${Strings.plural(this.totalCreneaux, "er")} chronodose${Strings.plural(this.totalCreneaux)} hittade`
+                        : `${this.totalCreneaux.toLocaleString()} lediga vaccintid${Strings.plural(this.totalCreneaux, "er")} hittade`
                     }
                   ${this.libelleLieuSelectionne()}
                   <br/>
                   ${(this.lieuxParDepartementAffiches && this.lieuxParDepartementAffiches.derniereMiseAJour) ?
                       html`
                       <p class="fs-6 text-gray-600">
-                        Dernière mise à jour : il y a
-                        ${ formatDistanceToNow(parseISO(this.lieuxParDepartementAffiches!.derniereMiseAJour), { locale: fr }) }
+                        Senast uppdaterat för
+                        ${ formatDistanceToNow(parseISO(this.lieuxParDepartementAffiches!.derniereMiseAJour), { locale: sv }) }
                         ${this.miseAJourDisponible?html`
                           <button class="btn btn-primary" @click="${() => { this.refreshLieux(); this.miseAJourDisponible = false; this.launchCheckingUpdates() }}">Rafraîchir</button>
                         `:html``}
                       </p>
                       <p class="alert alert-warning fs-6">
                           <i class="bi vmdicon-attention-fill"></i>
-                          Les plateformes sont très sollicitées, les données affichées par Vite Ma Dose peuvent avoir jusqu'à 30 minutes de retard pour Doctolib.
+                          Idag kan Jag vill ha vaccin bara visa lediga tider från vissa regioner (Blekinge, Jönköping, Kalmar, Kronoberg och Örebro) och vissa mottagningar.
                       </p>
                         `
                         : html``}
@@ -157,28 +154,22 @@ export abstract class AbstractVmdRdvView extends LitElement {
                         <h2 class="row align-items-center justify-content-center mb-5 h5 px-3">
                             <i class="bi vmdicon-calendar2-check-fill text-success me-2 fs-3 col-auto"></i>
                             <span class="col col-sm-auto">
-                                ${lieuxDisponibles.length} Lieu${Strings.plural(lieuxDisponibles.length, 'x')} de vaccination avec des ${SearchRequest.isChronodoseType(this.currentSearch) ? 'chronodoses' : 'disponibilités'}
+                                ${lieuxDisponibles.length} vaccinationsmottagning${Strings.plural(lieuxDisponibles.length, 'ar')} med lediga ${SearchRequest.isChronodoseType(this.currentSearch) ? 'chronodoses' : 'tider'}
                             </span>
                         </h2>
                     ` : html`
                         <h2 class="row align-items-center justify-content-center mb-5 h5">
                           <i class="bi vmdicon-calendar-x-fill text-black-50 me-2 fs-3 col-auto"></i>
-                          Aucun créneau ${SearchRequest.isChronodoseType(this.currentSearch) ? 'chronodose' : 'de vaccination'} trouvé
+                          Ingen ${SearchRequest.isChronodoseType(this.currentSearch) ? 'chronodose' : 'vaccintid'} hittad
                         </h2>
                         <div class="mb-5 container-content">
-                          <p class="fst-italic">Nous n’avons pas trouvé de <strong>rendez-vous de vaccination</strong> Covid-19
-                            sur les plateformes de réservation. </p>
-                          <p class="fst-italic">Nous vous recommandons toutefois de vérifier manuellement
-                            les rendez-vous de vaccination auprès des sites qui gèrent la réservation de créneau de vaccination.
-                            Pour ce faire, cliquez sur le bouton “vérifier le centre de vaccination”.
+                          <p class="fst-italic">Vi hittade ingen <strong>vaccintid</strong> på Regionens bokningsplattformar. </p>
+                          <p class="fst-italic">Jag vill ha vaccin kan inte ännu se tider på alla plattformar och därför finns det bara data från regionerna Blekinge, Jönköping, Kalmar, Kronoberg och Örebro. Vi rekommenderar att kolla manuellt genom att trycka på knappen "Kolla på mottagningssidan".
                             ${SearchRequest.isChronodoseType(this.currentSearch) ? html`
                                     Si vous êtes déjà éligible, vous pouvez <a class="text-decoration-underline" href="${this.getStandardResultsLink()}"">consulter les créneaux classiques</a>.
                             `:``}
                           </p>
-                          <p class="fst-italic">Pour recevoir une notification quand de nouveaux créneaux seront disponibles,
-                            nous vous invitons à utiliser les applications mobiles “Vite Ma Dose !” pour
-                            <u><a href="https://play.google.com/store/apps/details?id=com.cvtracker.vmd2" target="_blank" rel="noopener">Android</a></u>
-                            et <u><a href="http://apple.co/3dFMGy3" target="_blank" rel="noopener">iPhone</a></u>.
+                          <p class="fst-italic">Snart kommer vi även släppa ut mobilappar så man kan få push-notiser när nya vaccintider släpps i närheten.
                           </p>
                         </div>
                     `}
@@ -196,7 +187,7 @@ export abstract class AbstractVmdRdvView extends LitElement {
                 </div>
                 ${SearchRequest.isStandardType(this.currentSearch)?html`
                 <div class="eligibility-criteria fade-in-then-fade-out">
-                    <p>Les critères d'éligibilité sont vérifiés lors de la prise de rendez-vous</p>
+                    <p>Kolla noggrant att du ingår i grupperna som kan vaccinera sig i din region innan du bokar en dos.</p>
                 </div>`:html``}
             `}
         `;
@@ -554,7 +545,7 @@ export class VmdRdvParDepartementView extends AbstractVmdRdvView {
           nom = `${departement.nom_departement} (${departement.code_departement})`
         }
         return html`
-          pour
+          för Region
           <span class="fw-bold">${nom}</span>
         `
     }

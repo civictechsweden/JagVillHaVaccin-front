@@ -59,7 +59,7 @@ export class VmdCommuneOrDepartmentSelectorComponent extends LitElement {
           <form class="row align-items-center"
                 @submit="${this.handleSubmit}">
             <label for="searchAppointment-searchbar" class="col-sm-24 col-md-auto mb-md-1 label-for-search p-3 ps-1">
-                Localisation :
+                Plats :
             </label>
             <div class="px-0 col autocomplete ${classMap({'_open': this.showDropdown, '_withButton': this.filter !== ''})}">
                 <input type="search" class="autocomplete-input"
@@ -71,7 +71,7 @@ export class VmdCommuneOrDepartmentSelectorComponent extends LitElement {
                     @keydown="${this.handleKeydown}"
                     @keyup="${this.valueChanged}"
                     .value="${this.filter}"
-                    placeholder="Commune, Code postal, Département..."
+                    placeholder="Skriv din region"
                     id="searchAppointment-searchbar"
                 />
                 ${this.filter?html`

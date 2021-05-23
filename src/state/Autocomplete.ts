@@ -34,8 +34,8 @@ export class Autocomplete {
     }
     const term = this.normalize(prefix)
     const departements = await this.getMatchingDepartements(term)
-    const communes = await this.getMatchingCommunes(term)
-    return [ ...departements, ...communes ]
+    //const communes = await this.getMatchingCommunes(term)
+    return [ ...departements ]
   }
 
   private async getMatchingDepartements(term: NormalizedSearch): Promise<Departement[]> {

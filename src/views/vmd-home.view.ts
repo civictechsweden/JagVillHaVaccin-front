@@ -71,7 +71,7 @@ export class VmdHomeView extends LitElement {
             </div>
 
             <div class="platforms mt-5">
-                <h2 class="text-gray-600 text-center mb-5 h5">Trouvez vos rendez-vous avec</h2>
+                <h2 class="text-gray-600 text-center mb-5 h5">Jag vill ha vaccin hämtar vaccinsmottagningar från 1177.se och vaccintider från MittVaccin.se</h2>
 
                 <div class="row justify-content-center align-items-center">
                   ${Object.values(PLATEFORMES).filter(p => p.promoted).map(plateforme => {
@@ -83,82 +83,6 @@ export class VmdHomeView extends LitElement {
                   })}
                 </div>
             </div>
-
-            <div class="spacer mt-5 mb-5"></div>
-
-            <div class="container-xxl">
-                <div class="row gx-5">
-                    <div class="col-sm-24 col-md mb-5 mb-md-0 homeCard">
-                        <div class="p-5 text-dark bg-light homeCard-container">
-                            <div class="homeCard-content">
-                                <h2>VaccinTracker</h2>
-
-                                <p>
-                                    Combien de personnes ont été vaccinées ? Combien de premières injections ? Quel pourcentage de seconde injection ? Suivez la campagne vaccinale en France sur Vaccintracker.
-                                </p>
-                            </div>
-
-                            <div class="homeCard-actions">
-                                <div class="row justify-content-center justify-content-lg-start mt-5">
-                                    <a href="https://covidtracker.fr/vaccintracker/" target="_blank" rel="noreferrer" class="col-auto btn btn-primary btn-lg">
-                                        Accéder à VaccinTracker&nbsp;<i class="bi vmdicon-arrow-up-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-24 col-md homeCard">
-                        <div class="p-5 text-dark bg-light homeCard-container">
-                            <div class="homeCard-content">
-                                <h2>Carte des centres de vaccination contre la Covid-19</h2>
-
-                                <p>
-                                    Trouvez un centre de vaccination contre la Covid-19 proche de chez vous, consultez les centres pour savoir s’il y a des rendez-vous
-                                </p>
-                            </div>
-
-                            <div class="homeCard-actions">
-                                <div class="row justify-content-center justify-content-lg-start mt-5">
-                                    <a href="${Router.basePath}centres" class="col-auto btn btn-primary btn-lg">
-                                        Accéder à la carte des centres&nbsp;<i class="bi vmdicon-arrow-up-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="homeCard">
-                    <div class="p-5 text-dark bg-light homeCard-container mt-5">
-                        <div class="row gx-5">
-                            <div class="col-24 col-md text-center">
-                                <i class="bi vmdicon-commerical-building fs-6 text-primary"></i>
-                                <a href="${Router.basePath}statistiques" >
-                                    <div class="h4 mt-4">${this.statsLieu?this.statsLieu.global.disponibles.toLocaleString():""}</div>
-                                    <p>Lieux de vaccination ayant des disponibilités</p>
-                                </a>
-                            </div>
-                            <div class="col-24 col-md text-center">
-                                <i class="bi vmdicon-geo-alt-fill fs-6 text-primary"></i>
-                                <a href="${Router.basePath}statistiques" >
-                                    <div class="h4 mt-4">${this.statsLieu?this.statsLieu.global.total.toLocaleString():""}</div>
-                                    <p>Lieux de vaccination supportés</p>
-                                </a>
-                            </div>
-                            <div class="col-24 col-md text-center">
-                                <i class="bi vmdicon-check-circle-fill fs-6 text-primary"></i>
-                                <a href="${Router.basePath}statistiques" >
-                                    <div class="h4 mt-4">${this.statsLieu?this.statsLieu.global.creneaux.toLocaleString():""}</div>
-                                    <p>Créneaux de vaccination disponibles</p>
-                                </a>
-                              <em style="font-size: 1.3rem">Ce nombre ne correspond pas au nombre de doses disponibles</em>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="spacer mt-5 mb-5"></div>
 
             <slot name="about"></slot>
         `;

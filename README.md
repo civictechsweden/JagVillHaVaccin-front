@@ -1,5 +1,6 @@
 ![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)
 
+# This is a fork of of Vite Ma Dose's frontend. You can find the underlying data scrapers and the project road map on this repo
 # Contribuer
 
 Merci :) Ton aide est la bienvenue !
