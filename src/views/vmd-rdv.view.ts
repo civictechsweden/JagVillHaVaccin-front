@@ -74,6 +74,20 @@ export abstract class AbstractVmdRdvView extends LitElement {
             white-space: nowrap;
           }
 
+          input[type=time] {
+            line-height: 20px;
+            width: 80px;
+            font-size: 1.6rem;
+          }
+
+          .time-range {
+            width: auto;
+            display: inline-block;
+            background-color: white;
+            padding: 6px;
+            border: 1px solid grey;
+          }
+
           /* see https://css-tricks.com/value-bubbles-for-range-inputs/ */
           .range-wrap {
             position: relative;
@@ -273,6 +287,20 @@ export abstract class AbstractVmdRdvView extends LitElement {
                 <div class="px-0 col range-wrap">
                   <input type="range" id="searchAppointment-distance" style="width: 100%" class="range" min="0" max="${LIBELLES_DISTANCES.length-1}" @input="${(e: any) => { const $range = e.currentTarget; const val = $range.value; const min = $range.min ? $range.min : 0; const max = $range.max ? $range.max : 100; const newVal = Number(((val - min) * 100) / (max - min)); const $bubble = $range.parentElement.querySelector("output"); $bubble.innerHTML = LIBELLES_DISTANCES[Number(val)]; $bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`; }}" />
                   <output class="bubble"></output>
+                </div>
+              </div>
+              <div class="rdvForm-fields row align-items-center mb-3 mb-md-5">
+                <label for="searchAppointment-heures" class="col-sm-24 col-md-auto mb-md-1 label-for-search p-3 ps-1">
+                  Horaires :
+                </label>
+                <div class="col">
+                  <vmd-button-switch class="mb-3" style="display: inline-block"
+                                     codeSelectionne="allDay"
+                                     .options="${[{code:"allDay", libelle: "Toute la journée"}, {code:"horaire", libelle: "Plages horaires:"}]}">
+                  </vmd-button-switch>
+                  <div class="time-range"><input type="time" /> - <input type="time" /></div>
+                  <div class="time-range"><input type="time" /> - <input type="time" /></div>
+                  <button class="btn btn-primary">+</button>
                 </div>
               </div>
             </div>
