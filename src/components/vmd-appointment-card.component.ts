@@ -133,15 +133,24 @@ export class VmdAppointmentCardComponent extends LitElement {
                     highlighted: false,
                     estCliquable: true,
                     disabledBG: false,
-                    libelleDateAbsente: 'Bokning bara på telefon',
+                    libelleDateAbsente: 'Kan inte hämta tider för mottagningen',
                     cardLink: (content) => html`
-                          <a href="tel:${this.lieu.metadata.phone_number}">
+                          <a href="${this.lieu.url}">
                             ${content}
                           </a>`,
                     actions: html`
-                          <a href="tel:${this.lieu.metadata.phone_number}" class="btn btn-tel btn-lg">
-                            Ring ${Strings.toNormalizedPhoneNumber(this.lieu.metadata.phone_number)}
+                          <a href="${this.lieu.url}" class="btn btn-tel btn-lg">
+                            Kolla på mottagningssidan
                           </a>
+                          <div class="row align-items-center justify-content-center mt-3 text-gray-700">
+                            <div class="col-auto">
+                                ${plateforme?html`
+                                <img class="rdvPlatformLogo ${plateforme.styleCode}" src="${Router.basePath}assets/images/png/${plateforme.logo}" alt="Créneau de vaccination ${plateforme.nom}">
+                                `:html`
+                                ${this.lieu.plateforme}
+                                `}
+                            </div>
+                          </div>
                         `
                 };
             } else if(typeLieu === 'inactif') {

@@ -183,7 +183,7 @@ export type LieuxAvecDistanceParDepartement = {
     derniereMiseAJour: ISODateString;
 };
 export function typeActionPour(lieuAffichable: LieuAffichableAvecDistance): 'actif-via-plateforme'|'inactif-via-plateforme'|'actif-via-tel'|'inactif' {
-    const phoneOnly = lieuAffichable.appointment_by_phone_only && lieuAffichable.metadata.phone_number;
+    const phoneOnly = lieuAffichable.appointment_by_phone_only;
     if(phoneOnly) { // Phone only may have url, but we should ignore it !
         return 'actif-via-tel';
     } else if(lieuAffichable && lieuAffichable.appointment_count !== 0){
