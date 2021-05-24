@@ -16,6 +16,5 @@ export default ({ command, mode }) => ({
         autoprefixer()
       ]
     }
-  },
-  base: '/JagVillHaVaccin-front/'
+  }
 });
