@@ -1,0 +1,122 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/mixins/breakpoints";
+@import "../styles/bootstrap-variables";
+@import "../styles/global-variables";
+
+.rdvPlatformLogo {
+  max-width: 8rem;
+  max-height: 5rem;
+
+  &._doctolib {
+  }
+
+  &._maiia {
+    max-width: 7rem;
+  }
+
+  &._ordoclic {
+    max-width: 8.2rem;
+  }
+
+  &._keldoc {
+  }
+
+  &._pandalab {
+  }
+
+  &._mapharma {
+    max-width: 10rem;
+  }
+  &._avecmondoc {
+    max-width: 11rem;
+  }
+}
+
+.card {
+  max-width: 80vw;
+  margin: auto;
+  overflow: hidden;
+
+  .highlight-text {
+    display: none;
+    text-align: center;
+    font-weight: bold;
+    margin: 0px;
+    padding: 5px;
+  }
+
+  &.highlighted .highlight-text {
+      display: block;     
+  }
+
+  .distance {
+    font-weight: lighter;
+    font-size: 80%;
+  }
+
+  .text-description {
+    color: $gray-600;
+  }
+
+  &.bg-disabled {
+    .text-description {
+      color: $gray-700;
+    }
+  }
+
+  &.clickable {
+    &:hover {
+      background-color: darken($card-bg, 3%);
+    }
+
+    &.bg-disabled {
+      &:hover {
+        background-color: darken($gray-400, 3%);
+      }
+    }
+
+    cursor: pointer;
+  }
+
+  @include media-breakpoint-up(xl) {
+    max-width: 65vw;
+  }
+}
+
+vmd-appointment-metadata [slot="content"] a {
+  &:hover {
+    color: $link-color;
+  }
+
+  @include media-breakpoint-down(lg) {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-width: 1px;
+  }
+}
+
+a:hover,
+a:focus {
+  color: $link-color;
+}
+
+.search-chronodose {
+  .highlight-text {
+    background-color: tint-color($chronodoseColor, 80%);
+    color: $chronodoseColor;
+  }
+  .btn-tel {
+    background-color: tint-color($chronodoseColor, 80%);
+    color: $chronodoseColor;
+  }
+}
+.search-standard {
+  .highlight-text {
+    background-color: tint-color($stdColor, 80%);
+    color: $stdColor;
+  }
+  .btn-tel {
+    background-color: tint-color($stdColor, 91%);
+    color: $stdColor;
+  }
+}

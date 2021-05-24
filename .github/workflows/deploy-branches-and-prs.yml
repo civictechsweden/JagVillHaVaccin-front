@@ -1,0 +1,52 @@
+name: Déploiement Vite ma dose (branches & PR)
+
+on:
+  push:
+    branches:
+      - "*"
+      - "!main"
+  pull_request:
+    branches:
+      - "*"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.12"
+      - run: npm ci
+      - run: npm test -- --ci
+
+  deploy-dev:
+    # This workflow is only of value to the CovidTrackerFr/vitemadose-front repository and
+    # would always fail in forks, so we limit this job to CovidTrackerFr/vitemadose-front
+    # It means, 2 different cases when we want to run this job :
+    # - 'push' events (as it comes from the repository itself)
+    # - 'pull_requests' comming from the base repository
+    # See : https://github.com/CovidTrackerFr/vitemadose-front/issues/89
+    if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == 'CovidTrackerFr/vitemadose-front' }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.12"
+      - run: npm ci
+      - run: npm run build -- --base "/${{ env.GITHUB_REF_SLUG }}/"
+      - name: rsync deployments
+        uses: burnett01/rsync-deployments@4.1
+        with:
+          switches: -avz --delete --exclude ".git*"
+          path: ./dist/
+          remote_path: ${{ secrets.DEPLOY_PATH_DEV }}${{ env.GITHUB_REF_SLUG }}
+          remote_host: ${{ secrets.DEPLOY_IP }}
+          remote_user: ubuntu
+          remote_key: ${{ secrets.DEPLOY_KEY }}
