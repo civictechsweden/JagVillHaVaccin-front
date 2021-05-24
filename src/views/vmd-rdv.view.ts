@@ -142,7 +142,7 @@ export abstract class AbstractVmdRdvView extends LitElement {
                       </p>
                       <p class="alert alert-warning fs-6">
                           <i class="bi vmdicon-attention-fill"></i>
-                          Idag kan Jag vill ha vaccin bara visa lediga tider från vissa regioner (Blekinge, Jönköping, Kalmar, Kronoberg och Örebro) och vissa mottagningar.
+                          Idag kan <strong>Jag Vill Ha Vaccin</strong> bara visa lediga tider från vissa regioner (Blekinge, Jönköping, Kalmar, Kronoberg och Örebro) och vissa mottagningar.
                       </p>
                         `
                         : html``}
@@ -164,7 +164,7 @@ export abstract class AbstractVmdRdvView extends LitElement {
                         </h2>
                         <div class="mb-5 container-content">
                           <p class="fst-italic">Vi hittade ingen <strong>vaccintid</strong> på Regionens bokningsplattformar. </p>
-                          <p class="fst-italic">Jag vill ha vaccin kan inte ännu se tider på alla plattformar och därför finns det bara data från regionerna Blekinge, Jönköping, Kalmar, Kronoberg och Örebro. Vi rekommenderar att kolla manuellt genom att trycka på knappen "Kolla på mottagningssidan".
+                          <p class="fst-italic"><strong>Jag Vill Ha Vaccin</strong> kan inte ännu se tider på alla plattformar och därför finns det bara data från regionerna Blekinge, Jönköping, Kalmar, Kronoberg och Örebro. Vi rekommenderar att kolla manuellt genom att trycka på knappen "Kolla på mottagningssidan".
                             ${SearchRequest.isChronodoseType(this.currentSearch) ? html`
                                     Si vous êtes déjà éligible, vous pouvez <a class="text-decoration-underline" href="${this.getStandardResultsLink()}"">consulter les créneaux classiques</a>.
                             `:``}

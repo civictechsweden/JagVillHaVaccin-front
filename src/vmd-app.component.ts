@@ -59,7 +59,7 @@ export class VmdAppComponent extends LitElement {
 
             <footer class="row justify-content-between">
                 <div class="col-auto">
-                    Jag vill ha vaccin! är skapat av <a href="https://twitter.com/PierreMesure" target="_blank" rel="noreferrer">Pierre Mesure</a> med kod från <a href="https://github.com/CovidTrackerFr/vitemadose-front">Vite Ma Dose</a> av CovidTracker -
+                    <strong>Jag Vill Ha Vaccin</strong>! är skapat av <a href="https://twitter.com/PierreMesure" target="_blank" rel="noreferrer">Pierre Mesure</a> med kod från <a href="https://github.com/CovidTrackerFr/vitemadose-front">Vite Ma Dose</a> av CovidTracker -
                     <a href="https://github.com/civictechsweden/vitemadose-front/blob/main/LICENSE">(CC BY-NC-SA 4.0)</a>
                 </div>
             </footer>
