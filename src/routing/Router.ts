@@ -66,7 +66,7 @@ class Routing {
             },
             pageTitleProvider: (params) =>
                 State.current.chercheDepartementParCode(params[`codeDpt`])
-                    .then(nomDpt => `Vaccination COVID-19 en ${nomDpt.nom_departement} ${params[`codeDpt`]}`)
+                    .then(nomDpt => `Vaccination COVID-19 i Region ${nomDpt.nom_departement} ${params[`codeDpt`]}`)
         });
         this.declareRoutes({
             pathPattern: [
