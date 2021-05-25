@@ -79,7 +79,7 @@ export type Plateforme = {
 export const PLATEFORMES: Record<TypePlateforme, Plateforme> = {
     'MittVaccin': { code: 'MittVaccin', logo: 'logo_mittvaccin.png', nom: 'MittVaccin', promoted: true,  website: 'https://mittvaccin.se/',  styleCode: '_doctolib'},
     'Vaccina': { code: 'Vaccina', logo: 'logo_vaccina.png', nom: 'Vaccina', promoted: true,  website: 'https://vaccina.se/',  styleCode: '_doctolib'},
-    '1177': { code: '1177', logo: 'logo_1177.png', nom: '1177', promoted: true,  website: 'https://1177.se/',  styleCode: '_doctolib'}
+    '1177': { code: '1177', logo: '', nom: '1177', promoted: false,  website: 'https://1177.se/',  styleCode: '_doctolib'}
 };
 /*
 {
