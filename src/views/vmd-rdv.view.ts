@@ -142,7 +142,7 @@ export abstract class AbstractVmdRdvView extends LitElement {
                       </p>
                       <p class="alert alert-warning fs-6">
                           <i class="bi vmdicon-attention-fill"></i>
-                          Idag kan <strong>Jag Vill Ha Vaccin</strong> bara visa lediga tider från vissa regioner (Blekinge, Jönköping, Kalmar, Kronoberg och Örebro) och vissa mottagningar.
+                          Idag kan <strong>Jag Vill Ha Vaccin</strong> bara visa lediga tider från vissa bokningsplattformar. <br>Dessutom är det viktigt att kolla att man uppfyller kriterierna innan att boka.
                       </p>
                         `
                         : html``}
