@@ -3,11 +3,10 @@ name: Déploiement Vite ma dose (branches & PR)
 on:
   push:
     branches:
-      - "*"
-      - "!main"
+      - no_branch_ever # Don't trigger on push
   pull_request:
     branches:
-      - "*"
+      - no_branch_ever # Don't trigger on push
 
 jobs:
   test:

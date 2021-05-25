@@ -71,7 +71,9 @@ export class VmdHomeView extends LitElement {
             </div>
 
             <div class="platforms mt-5">
-                <h2 class="text-gray-600 text-center mb-5 h5"><strong>Jag Vill Ha Vaccin</strong> hämtar vaccinsmottagningar från 1177.se och vaccintider från MittVaccin.se och Vaccina.se</h2>
+                <h2 class="text-gray-600 text-center mb-5 h5"><strong>Jag Vill Ha Vaccin!</strong> hämtar vaccinsmottagningar från 1177.se och vaccintider från MittVaccin.se och Vaccina.se<br>
+                <strong>OBS!</strong> Tjänsten är if prototypfas och visar varken alla mottagningar eller alla vaccintider. Den ersätter inte ett manuellt sök.
+                </h2>
 
                 <div class="row justify-content-center align-items-center">
                   ${Object.values(PLATEFORMES).filter(p => p.promoted).map(plateforme => {
