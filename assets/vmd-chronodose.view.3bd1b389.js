@@ -1,4 +1,4 @@
-import{L as e,h as r,C as t,d as s,e as o}from"./index.7a607d40.js";import"./vendor.1d43dcfd.js";var a=Object.defineProperty,d=Object.getOwnPropertyDescriptor;let i=class extends e{render(){return r`
+import{L as e,h as r,C as t,d as s,e as o}from"./index.9f4535d5.js";import"./vendor.1d43dcfd.js";var a=Object.defineProperty,d=Object.getOwnPropertyDescriptor;let i=class extends e{render(){return r`
             <slot name="chronodose"></slot>
 
             <div class="homeCard-actions">
