@@ -142,7 +142,7 @@ export abstract class AbstractVmdRdvView extends LitElement {
                       </p>
                       <p class="alert alert-warning fs-6">
                           <i class="bi vmdicon-attention-fill"></i>
-                          Idag kan <strong>Jag Vill Ha Vaccin</strong> bara visa lediga tider från vissa bokningsplattformar. <br>Dessutom är det viktigt att kolla att man uppfyller kriterierna innan att boka.
+                          Den 26e maj bad MittVaccin och de sju regionerna som använder deras bokningsplattform om att sluta visa deras mottagningars vaccintider. Vi har accepterat för att inleda en dialog med dem och vi hoppas att kunna visa alla vaccintider igen så snart som möjligt!
                       </p>
                         `
                         : html``}
