@@ -142,7 +142,7 @@ export abstract class AbstractVmdRdvView extends LitElement {
                       </p>
                       <p class="alert alert-warning fs-6">
                           <i class="bi vmdicon-attention-fill"></i>
-                          Den 26e maj bad MittVaccin och de sju regionerna som använder deras bokningsplattform om att sluta visa deras mottagningars vaccintider. Vi har accepterat för att inleda en dialog med dem och vi hoppas att kunna visa alla vaccintider igen så snart som möjligt!
+                          Från och med den 26e maj kan man inte se vaccinationstider som hanteras av MittVaccin. Detta för att de sju regionerna som använder MittVaccin vill utreda den här tjänsten. Vi har inlett en dialog med dem och hoppas att kunna visa alla vaccintider igen så snart som möjligt!
                       </p>
                         `
                         : html``}

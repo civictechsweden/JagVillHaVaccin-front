@@ -230,7 +230,7 @@ export class VmdAppointmentCardComponent extends LitElement {
 
     private cardTitle(cardConfig: any): string {
       if (this.lieu.plateforme == "MittVaccin") {
-        return "Kan inte visa tider under regionernas utredning"
+        return "Tillgängliga tider kan inte visas i enlighet med regionens begäran"
       }
       if (this.lieu.prochain_rdv) {
         return this.toTitleCase(formatDate(parseISO(this.lieu.prochain_rdv), "EEEE d MMMM 'kl.'HH:mm", { locale: sv }))
