@@ -79,6 +79,10 @@ export class VmdAppointmentCardComponent extends LitElement {
                 actions: TemplateResult|undefined, libelleDateAbsente: string
             };
             let typeLieu = typeActionPour(this.lieu);
+            let scared_regions = ["12", "04", "10", "06", "08", "07", "04", "22", "14", "18"];
+            let is_from_the_seven_regions = scared_regions.includes(this.lieu.departement);
+            let isMittVaccin = (this.lieu.plateforme == "MittVaccin");
+
             if(typeLieu === 'actif-via-plateforme' || typeLieu === 'inactif-via-plateforme') {
                 let specificCardConfig: { disabledBG: boolean, libelleDateAbsente: string, libelleBouton: string, typeBouton: 'btn-info'|'btn-primary', onclick: ()=>void };
                 if(typeLieu === 'inactif-via-plateforme') {
@@ -164,6 +168,16 @@ export class VmdAppointmentCardComponent extends LitElement {
                 };
             } else {
                 throw new Error(`Unsupported typeLieu : ${typeLieu}`)
+            }
+            if (isMittVaccin || is_from_the_seven_regions) {
+              cardConfig = {
+                    highlighted: false,
+                    estCliquable: false,
+                    disabledBG: true,
+                    libelleDateAbsente: 'Inga vaccintider',
+                    cardLink: (content) => content,
+                    actions: undefined
+                };
             }
 
             return cardConfig.cardLink(html`
