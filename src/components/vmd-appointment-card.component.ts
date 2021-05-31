@@ -61,6 +61,13 @@ export class VmdAppointmentCardComponent extends LitElement {
         }));
     }
 
+    isFromScaredRegion() {
+        let scared_regions = ["12", "04", "10", "06", "08", "07", "04", "22", "18"];
+        let isFromTheSevenRegions = scared_regions.includes(this.lieu.departement);
+        let isMittVaccin = (this.lieu.plateforme == "MittVaccin");
+        return isMittVaccin && isFromTheSevenRegions;
+    }
+
     render() {
             const plateforme: Plateforme|undefined = PLATEFORMES[this.lieu.plateforme];
             let distance: string|undefined;
@@ -79,9 +86,6 @@ export class VmdAppointmentCardComponent extends LitElement {
                 actions: TemplateResult|undefined, libelleDateAbsente: string
             };
             let typeLieu = typeActionPour(this.lieu);
-            let scared_regions = ["12", "04", "10", "06", "08", "07", "04", "22", "14", "18"];
-            let is_from_the_seven_regions = scared_regions.includes(this.lieu.departement);
-            let isMittVaccin = (this.lieu.plateforme == "MittVaccin");
 
             if(typeLieu === 'actif-via-plateforme' || typeLieu === 'inactif-via-plateforme') {
                 let specificCardConfig: { disabledBG: boolean, libelleDateAbsente: string, libelleBouton: string, typeBouton: 'btn-info'|'btn-primary', onclick: ()=>void };
@@ -89,7 +93,7 @@ export class VmdAppointmentCardComponent extends LitElement {
                     specificCardConfig = {
                         disabledBG: true,
                         libelleDateAbsente: 'Inga vaccintider',
-                        libelleBouton: 'Kolla på mottagningssidan',
+                        libelleBouton: 'Kolla manuellt på 1177',
                         typeBouton: 'btn-info',
                         onclick: () => this.verifierRdv()
                     };
@@ -97,7 +101,7 @@ export class VmdAppointmentCardComponent extends LitElement {
                     specificCardConfig = {
                         disabledBG: false,
                         libelleDateAbsente: 'Okänt datum',
-                        libelleBouton: 'Boka en tid',
+                        libelleBouton: 'Boka på 1177',
                         typeBouton: 'btn-primary',
                         onclick: () => this.prendreRdv()
                     };
@@ -105,7 +109,7 @@ export class VmdAppointmentCardComponent extends LitElement {
 
                 cardConfig = {
                     highlighted: this.highlightable && !specificCardConfig.disabledBG,
-                    estCliquable: true,
+                    estCliquable: false,
                     disabledBG: specificCardConfig.disabledBG,
                     libelleDateAbsente: specificCardConfig.libelleDateAbsente,
                     cardLink: (content) =>
@@ -119,19 +123,14 @@ export class VmdAppointmentCardComponent extends LitElement {
                         <div class="col-auto text-description">
                           ${this.lieu.appointment_count.toLocaleString()} tid${Strings.plural(this.lieu.appointment_count, "er")}
                         </div>
-                        ${this.lieu.plateforme?html`
-                        |
-                        <div class="col-auto">
-                            ${plateforme?html`
-                            <img class="rdvPlatformLogo ${plateforme.styleCode}" src="${Router.basePath}assets/images/png/${plateforme.logo}" alt="Créneau de vaccination ${plateforme.nom}">
-                            `:html`
-                            ${this.lieu.plateforme}
-                            `}
-                        </div>
-                        `:html``}
                       </div>
                     `
                 };
+                if(typeLieu === 'inactif-via-plateforme') {
+                  cardConfig.actions = html``
+                  cardConfig.cardLink = (content) =>
+                        html`${content}`
+                }
             } else if(typeLieu === 'actif-via-tel') {
                 cardConfig = {
                     highlighted: false,
@@ -169,7 +168,7 @@ export class VmdAppointmentCardComponent extends LitElement {
             } else {
                 throw new Error(`Unsupported typeLieu : ${typeLieu}`)
             }
-            if (isMittVaccin || is_from_the_seven_regions) {
+            if (this.isFromScaredRegion()) {
               cardConfig = {
                     highlighted: false,
                     estCliquable: false,
@@ -243,7 +242,7 @@ export class VmdAppointmentCardComponent extends LitElement {
     }
 
     private cardTitle(cardConfig: any): string {
-      if (this.lieu.plateforme == "MittVaccin") {
+      if (this.isFromScaredRegion()) {
         return "Tillgängliga tider kan inte visas i enlighet med regionens begäran"
       }
       if (this.lieu.prochain_rdv) {

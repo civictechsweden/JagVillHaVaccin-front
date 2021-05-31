@@ -145,7 +145,7 @@ export class VmdCommuneOrDepartmentSelectorComponent extends LitElement {
 
     private departementSelected(dpt: Departement) {
         this.suggestions = []
-        this.filter = `${dpt.code_departement} - ${dpt.nom_departement}`;
+        this.filter = `${dpt.nom_departement}`;
         this.dispatchEvent(new CustomEvent<DepartementSelected>('on-departement-selected', {
             detail: {
                 departement: dpt
@@ -209,7 +209,7 @@ export class VmdCommuneOrDepartmentSelectorComponent extends LitElement {
     }
 
     private fillDepartement(departement: Departement) {
-        this.filter = `${departement.code_departement} - ${departement.nom_departement}`
+        this.filter = `${departement.nom_departement}`
     }
 
     private fillCommune(commune: Commune) {
@@ -234,7 +234,7 @@ export class VmdCommuneOrDepartmentSelectorComponent extends LitElement {
         aria-selected="${index === 0}"
         @click="${() => this.departementSelected(dpt)}"
         >
-          <span class="codeDepartement">${dpt.code_departement}</span> - ${dpt.nom_departement}
+          ${dpt.nom_departement}
         </li>`
     }
 

@@ -15,7 +15,8 @@
     "test": "jest",
     "dev": "vite",
     "build": "tsc && vite build",
-    "build-dev": "tsc && vite --base dev/ build"
+    "build-dev": "tsc && vite --base dev/ build",
+    "preview": "vite preview"
   },
   "browserslist": [
     "defaults",
