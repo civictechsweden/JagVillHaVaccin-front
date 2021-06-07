@@ -62,10 +62,11 @@ export class VmdAppointmentCardComponent extends LitElement {
     }
 
     isFromScaredRegion() {
-        let ScaredRegions = ["12", "04", "08", "04", "22", "18"];
-        let isFromTheSevenRegions = ScaredRegions.includes(this.lieu.departement);
-        let isMittVaccin = (this.lieu.plateforme == "MittVaccin");
-        return isMittVaccin && isFromTheSevenRegions;
+        //let ScaredRegions = ["08", "22", "18"];
+        //let isFromTheSevenRegions = ScaredRegions.includes(this.lieu.departement);
+        //let isMittVaccin = (this.lieu.plateforme == "MittVaccin");
+        //return isMittVaccin && isFromTheSevenRegions;
+        return false;
     }
 
     render() {

@@ -141,8 +141,10 @@ export abstract class AbstractVmdRdvView extends LitElement {
                         `:html``}
                       </p>
                       <p class="alert alert-warning fs-6">
-                          <i class="bi vmdicon-attention-fill"></i>
-                          Från och med den 26e maj kan man inte se vaccinationstider som hanteras av MittVaccin. Detta för att de sju regionerna som använder MittVaccin vill utreda den här tjänsten. Vi har inlett en dialog med dem och hoppas att kunna visa alla vaccintider igen så snart som möjligt!
+                        I nuläget täcker tjänsten alla mottagningar i regioner som <strong>Blekinge, Jönköping, Kalmar, Örebro, Östergötland, Västerbotten, Västernorrland och Västmanland</strong>. <br><br>Den täcker även över 75% av <strong>Skånes</strong> mottagningar, 65% av <strong>VästraGötalandsregionens</strong> och lite under hälften av mottagningarna i <strong>Dalarna, Kronoberg och Sörmland</strong>.
+                        <br><br>Vi har tyvärr ingen data från <strong>Gävleborg, Gotland, Halland, Jämtland, Norbotten, Stockholm, Uppsala eller Värmland</strong> i nuläget.
+
+                        <br><br>Bor du i <strong><u><a href="https://vaccinationsbokning.regionvasterbotten.se/" target="_blank" rel="noreferrer">Västerbotten</a></u></strong>, <strong><u><a href="https://vaccinationsbokning.regionvastmanland.se/" target="_blank" rel="noreferrer">Västmanland</a></u></strong>, <strong><u><a href="https://www.skane.se/Halsa-och-vard/hitta-vard/covid-19-coronavirus/fragor-och-svar-om-covid-19-vaccination/lediga-tider-for-vaccination-mot-covid-19/?municipalityName=" target="_blank" rel="noreferrer">Skåne</a></u></strong> eller i <strong><u><a href="https://www.vgregion.se/ov/vaccinationstider/bokningsbara-tider/" target="_blank" rel="noreferrer">Västra Götaland</a></u></strong> kan du även kolla regionernas egna sidor som sammanfattar de lediga tiderna.
                       </p>
                         `
                         : html``}
@@ -163,19 +165,16 @@ export abstract class AbstractVmdRdvView extends LitElement {
                           Ingen ${SearchRequest.isChronodoseType(this.currentSearch) ? 'chronodose' : 'vaccintid'} hittad
                         </h2>
                         <div class="mb-5 container-content">
-                          <p class="fst-italic">Eftersom vi bara hämtar tider från MittVaccin.se och Vaccina.se betyder det att vi bara har data från vissa mottagningar.
+                          <p class="fst-italic">Eftersom vi bara hämtar tider från vissa öppna bokningsplattformar betyder det att vi bara har data från vissa mottagningar.
                             ${SearchRequest.isChronodoseType(this.currentSearch) ? html`
                                     Si vous êtes déjà éligible, vous pouvez <a class="text-decoration-underline" href="${this.getStandardResultsLink()}"">consulter les créneaux classiques</a>.
                             `:``}
                           </p>
                           <p class="fst-italic">
-                          I nuläget täcker tjänsten nästan alla mottagningar i regioner som <strong>Blekinge, Jönköping, Kalmar, Kronoberg, Örebro och Västernorrland</strong>, och flera stycken i <strong>Skåne, Södermanland, Västerbotten och Västra Götaland</strong>.
-                          </p>
-                          <p class="fst-italic">
-                          Bor du i <strong>Dalarna, Gävleborg, Halland, Jämtland, Norbotten, Östergötland, Stockholm, Uppsala eller Värmland</strong> kan <strong>Jag Vill Ha Vaccin</strong> inte hjälpa dig (ännu!).
-                          </p>
-                          <p class="fst-italic">
-                          Bor du i <strong><u><a href="https://vaccinationsbokning.regionvasterbotten.se/" target="_blank" rel="noreferrer">Västerbotten</a></u></strong>, <strong><u><a href="https://vaccinationsbokning.regionvastmanland.se/" target="_blank" rel="noreferrer">Västmanland</a></u></strong> eller i <strong><u><a href="https://www.vgregion.se/ov/vaccinationstider/bokningsbara-tider/" target="_blank" rel="noreferrer">Västra Götaland</a></u></strong> kan du även kolla regionernas egna sidor som sammanfattar de lediga tiderna.
+                          I nuläget täcker tjänsten alla mottagningar i regioner som <strong>Blekinge, Jönköping, Kalmar, Örebro, Östergötland, Västerbotten, Västernorrland och Västmanland</strong>. <br><br>Den täcker även över 75% av <strong>Skånes</strong> mottagningar, 65% av <strong>VästraGötalandsregionens</strong> och lite under hälften av mottagningarna i <strong>Dalarna, Kronoberg och Sörmland</strong>.
+                        <br><br>Vi har tyvärr ingen data från <strong>Gävleborg, Gotland, Halland, Jämtland, Norbotten, Stockholm, Uppsala eller Värmland</strong> i nuläget.
+
+                        <br><br>Bor du i <strong><u><a href="https://vaccinationsbokning.regionvasterbotten.se/" target="_blank" rel="noreferrer">Västerbotten</a></u></strong>, <strong><u><a href="https://vaccinationsbokning.regionvastmanland.se/" target="_blank" rel="noreferrer">Västmanland</a></u></strong>, <strong><u><a href="https://www.skane.se/Halsa-och-vard/hitta-vard/covid-19-coronavirus/fragor-och-svar-om-covid-19-vaccination/lediga-tider-for-vaccination-mot-covid-19/?municipalityName=" target="_blank" rel="noreferrer">Skåne</a></u></strong> eller i <strong><u><a href="https://www.vgregion.se/ov/vaccinationstider/bokningsbara-tider/" target="_blank" rel="noreferrer">Västra Götaland</a></u></strong> kan du även kolla regionernas egna sidor som sammanfattar de lediga tiderna.
                           </p>
                         </div>
                     `}
