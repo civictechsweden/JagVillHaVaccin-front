@@ -43,7 +43,7 @@ export class VmdAppComponent extends LitElement {
                     <div class="col">
                         <div class="row justify-content-end gx-5">
                             <div class="col-auto">
-                                <a href="${Router.basePath}apropos">Om</a>
+                                <a href="${Router.basePath}apropos">Om tjänsten</a>
                             </div>
                         </div>
                     </div>

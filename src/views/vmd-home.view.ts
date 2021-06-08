@@ -3,7 +3,7 @@ import {Router} from "../routing/Router";
 import {
     libelleUrlPathDeCommune,
     libelleUrlPathDuDepartement,
-    PLATEFORMES, SearchType,
+    SearchType,
     SearchRequest,
     State,
     StatsLieu, Departement,
@@ -71,19 +71,9 @@ export class VmdHomeView extends LitElement {
             </div>
 
             <div class="platforms mt-5">
-                <h2 class="text-gray-600 text-center mb-5 h5"><strong>Jag Vill Ha Vaccin!</strong> hämtar vaccinmottagningar från 1177.se och vaccintider från MittVaccin.se och Vaccina.se<br>
-                <strong>OBS!</strong> Tjänsten är i prototypfas och visar varken alla mottagningar eller alla vaccintider. Den ersätter inte ett manuellt sök.
+                <h2 class="text-gray-600 text-center mb-5 h5"><strong>Jag Vill Ha Vaccin!</strong> hämtar vaccinmottagningar från 1177.se och vaccintider från många olika bokningsplattformar<br>
+                <strong>OBS!</strong> Tjänsten visar varken alla mottagningar eller alla vaccintider. Den ersätter inte ett manuellt sök.
                 </h2>
-
-                <div class="row justify-content-center align-items-center">
-                  ${Object.values(PLATEFORMES).filter(p => p.promoted).map(plateforme => {
-                      return html`
-                        <div class="col-auto">
-                          <img class="platforms-logo ${plateforme.styleCode}" src="${Router.basePath}assets/images/png/${plateforme.logo}" alt="Créneaux de vaccination ${plateforme.nom}">
-                        </div>
-                      `
-                  })}
-                </div>
             </div>
 
             <slot name="about"></slot>
