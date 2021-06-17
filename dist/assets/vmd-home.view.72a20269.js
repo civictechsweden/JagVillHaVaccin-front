@@ -1,61 +1,4 @@
-import {css, customElement, html, LitElement, property } from 'lit-element';
-import {Router} from "../routing/Router";
-import {
-    libelleUrlPathDeCommune,
-    libelleUrlPathDuDepartement,
-    SearchType,
-    SearchRequest,
-    State,
-    StatsLieu, Departement,
-} from "../state/State";
-import {CSS_Global, CSS_Home} from "../styles/ConstructibleStyleSheets";
-
-@customElement('vmd-home')
-export class VmdHomeView extends LitElement {
-
-    //language=css
-    static styles = [
-        CSS_Global,
-        CSS_Home,
-        css`
-            :host {
-                display: block;
-            }
-        `
-    ];
-
-    @property({type: Array, attribute: false}) recuperationCommunesEnCours: boolean = false;
-    @property({type: Array, attribute: false}) statsLieu: StatsLieu|undefined = undefined;
-
-    private async onSearch (event: CustomEvent<SearchRequest>) {
-      const searchType: SearchType = window.location.hostname === 'chronodose.fr' ? 'chronodose':'standard';
-      if (SearchRequest.isByDepartement(event.detail)) {
-        const departement = event.detail.departement
-        Router.navigateToRendezVousAvecDepartement(departement.code_departement, libelleUrlPathDuDepartement(departement), searchType)
-      } else {
-        const commune = event.detail.commune;
-        const departements = await State.current.departementsDisponibles();
-        const departement: Departement|undefined = departements.find(({ code_departement }) => code_departement === commune.codeDepartement);
-
-        if (!departement) {
-            console.error(`Can't find departement matching code ${commune.codeDepartement}`)
-            return;
-        }
-
-        Router.navigateToRendezVousAvecCommune(
-            'distance',
-            departement.code_departement,
-            libelleUrlPathDuDepartement(departement),
-            commune.code,
-            commune.codePostal,
-            libelleUrlPathDeCommune(commune!),
-            searchType
-        );
-      }
-    }
-
-    render() {
-        return html`
+import{L as t,S as e,R as a,l as i,a as s,b as r,h as n,C as o,c,d,p as l,e as m}from"./index.7baad340.js";import"./vendor.1d43dcfd.js";var v=Object.defineProperty,p=Object.getOwnPropertyDescriptor,h=(t,e,a,i)=>{for(var s,r=i>1?void 0:i?p(e,a):e,n=t.length-1;n>=0;n--)(s=t[n])&&(r=(i?s(e,a,r):s(r))||r);return i&&r&&v(e,a,r),r};let g=class extends t{constructor(){super(...arguments),this.recuperationCommunesEnCours=!1,this.statsLieu=void 0}async onSearch(t){const n="chronodose.fr"===window.location.hostname?"chronodose":"standard";if(e.isByDepartement(t.detail)){const e=t.detail.departement;a.navigateToRendezVousAvecDepartement(e.code_departement,i(e),n)}else{const e=t.detail.commune,o=(await s.current.departementsDisponibles()).find((({code_departement:t})=>t===e.codeDepartement));if(!o)return void console.error(`Can't find departement matching code ${e.codeDepartement}`);a.navigateToRendezVousAvecCommune("distance",o.code_departement,i(o),e.code,e.codePostal,r(e),n)}}render(){return n`
             <div class="searchAppointment">
                 <div class="searchAppointment-title h1">
                   <slot name="main-title"></slot>
@@ -108,11 +51,8 @@ export class VmdHomeView extends LitElement {
         </div>
         
         <slot name="about"></slot>
-        `;
-    }
-
-    async connectedCallback() {
-        super.connectedCallback();
-        this.statsLieu = await State.current.statsLieux()
-    }
-}
+        `}async connectedCallback(){super.connectedCallback(),this.statsLieu=await s.current.statsLieux()}};g.styles=[o,c,d`
+            :host {
+                display: block;
+            }
+        `],h([l({type:Array,attribute:!1})],g.prototype,"recuperationCommunesEnCours",2),h([l({type:Array,attribute:!1})],g.prototype,"statsLieu",2),g=h([m("vmd-home")],g);export{g as VmdHomeView};
