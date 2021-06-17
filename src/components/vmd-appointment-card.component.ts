@@ -247,7 +247,7 @@ export class VmdAppointmentCardComponent extends LitElement {
         return "Tillgängliga tider kan inte visas i enlighet med regionens begäran"
       }
       if (this.lieu.prochain_rdv) {
-        return this.toTitleCase(formatDate(parseISO(this.lieu.prochain_rdv), "EEEE d MMMM 'kl.'HH:mm", { locale: sv }))
+        return this.toTitleCase(formatDate(parseISO(this.lieu.prochain_rdv), "EEEE d MMMM 'kl.'HH:mm", { locale: sv })).replace(' Kl.00:00', '')
       } else {
         return cardConfig.libelleDateAbsente
       }

@@ -183,11 +183,11 @@ export type LieuxAvecDistanceParDepartement = {
     derniereMiseAJour: ISODateString;
 };
 export function typeActionPour(lieuAffichable: LieuAffichableAvecDistance): 'actif-via-plateforme'|'inactif-via-plateforme'|'actif-via-tel'|'inactif' {
-
+    console.log(lieuAffichable)
     const phoneOnly = lieuAffichable.appointment_by_phone_only;
     if(phoneOnly) { // Phone only may have url, but we should ignore it !
         return 'actif-via-tel';
-    } else if(lieuAffichable && lieuAffichable.appointment_count !== 0){
+    } else if(lieuAffichable && ((lieuAffichable.prochain_rdv && lieuAffichable.prochain_rdv !== '') || lieuAffichable.appointment_count !== 0)){
         return 'actif-via-plateforme';
     } else if(lieuAffichable && lieuAffichable.appointment_count === 0){
         return 'inactif-via-plateforme';

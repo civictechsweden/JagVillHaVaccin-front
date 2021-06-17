@@ -135,7 +135,7 @@ export abstract class AbstractVmdRdvView extends LitElement {
                       html`
                       <p class="fs-6 text-gray-600">
                         Senast uppdaterat för
-                        ${ formatDistanceToNow(parseISO(this.lieuxParDepartementAffiches!.derniereMiseAJour), { locale: sv }) }
+                        ${ formatDistanceToNow(parseISO(this.lieuxParDepartementAffiches!.derniereMiseAJour), { locale: sv }) } sedan
                         ${this.miseAJourDisponible?html`
                           <button class="btn btn-primary" @click="${() => { this.refreshLieux(); this.miseAJourDisponible = false; this.launchCheckingUpdates() }}">Rafraîchir</button>
                         `:html``}
