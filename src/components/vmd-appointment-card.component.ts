@@ -102,7 +102,7 @@ export class VmdAppointmentCardComponent extends LitElement {
                     specificCardConfig = {
                         disabledBG: false,
                         libelleDateAbsente: 'Okänt datum',
-                        libelleBouton: 'Boka på 1177',
+                        libelleBouton: 'Till vaccinationsbokning',
                         typeBouton: 'btn-primary',
                         onclick: () => this.prendreRdv()
                     };
