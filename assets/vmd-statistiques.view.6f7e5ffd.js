@@ -1,4 +1,4 @@
-import{C as t,d as e,u as n,p as i,w as a,L as r,h as o,e as s,a as l,c as u}from"./index.66f03ae4.js";import{g as d,c,a as h}from"./vendor.1d43dcfd.js";var f,g,m=Object.defineProperty,p=Object.getOwnPropertyDescriptor,v=(t,e,n,i)=>{for(var a,r=i>1?void 0:i?p(e,n):e,o=t.length-1;o>=0;o--)(a=t[o])&&(r=(i?a(e,n,r):a(r))||r);return i&&r&&m(e,n,r),r};class b extends r{constructor(){super()}render(){return o`
+import{C as t,d as e,u as n,p as i,w as a,L as r,h as o,e as s,a as l,c as u}from"./index.7baad340.js";import{g as d,c,a as h}from"./vendor.1d43dcfd.js";var f,g,m=Object.defineProperty,p=Object.getOwnPropertyDescriptor,v=(t,e,n,i)=>{for(var a,r=i>1?void 0:i?p(e,n):e,o=t.length-1;o>=0;o--)(a=t[o])&&(r=(i?a(e,n,r):a(r))||r);return i&&r&&m(e,n,r),r};class b extends r{constructor(){super()}render(){return o`
             <div class="chart-container-responsive">
                 <canvas id="graph" width="${this.width}" height="${this.height}"></canvas>
             </div>
@@ -39,7 +39,7 @@ y.version="2.29.1",f=Ve,y.fn=Fn,y.min=function(){var t=[].slice.call(arguments,0
                       <div class="p-5 text-dark bg-light homeCard-container mt-5">
                         <h3 class="h2"> Créneaux disponibles par habitant</h3>
                         <p>Nombre de créneaux disponibles à la réservation pour les prochains jours rapporté à 1000 habitants de chaque département.</p>
-                        <img class="img-fluid" src='https://vitemadose.gitlab.io/vitemadose/map_creneaux_pop.svg' />
+                        <img class="img-fluid" src='https://github.com/abulascruz/JagVillHaVaccin/blob/master/data/output/map_creneaux.svg' />
                       </div>
                     </div>
 
