@@ -328,7 +328,7 @@ export class State {
 
     @Memoize()
     async statsLieux(): Promise<StatsLieu> {
-      const resp = await fetch(`${VMD_BASE_URL}/stats.json`)
+      const resp = await fetch(`${VMD_BASE_URL}/data/output/stats.json`)
       const statsParDepartements: Record<CodeDepartement|'tout_departement', StatLieu> = await resp.json()
       const { tout_departement: global, ...parDepartements } = statsParDepartements
       return {
