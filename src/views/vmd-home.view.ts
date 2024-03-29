@@ -69,6 +69,10 @@ export class VmdHomeView extends LitElement {
                     </div>
                 </div>
             </div>
+            <div class="platforms mt-5">
+                <h2 class="text-black-600 text-center mb-5 h1"><strong>⚠️ OBS: Den här webbsidan är arkiverad och visar inte längre uppdaterad information. 💀</strong>
+                </h2>
+            </div>
 
             <div class="platforms mt-5">
                 <h2 class="text-gray-600 text-center mb-5 h5"><strong>Jag Vill Ha Vaccin!</strong> sammanställer vaccinationstider från många olika bokningsplattformar för att underlätta för dig som vill hita vaccinationstid.<br>
