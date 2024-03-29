@@ -1,4 +1,4 @@
-import{L as t,S as e,R as a,l as i,a as s,b as r,h as n,C as o,c,d,p as l,e as m}from"./index.7baad340.js";import"./vendor.1d43dcfd.js";var v=Object.defineProperty,p=Object.getOwnPropertyDescriptor,h=(t,e,a,i)=>{for(var s,r=i>1?void 0:i?p(e,a):e,n=t.length-1;n>=0;n--)(s=t[n])&&(r=(i?s(e,a,r):s(r))||r);return i&&r&&v(e,a,r),r};let g=class extends t{constructor(){super(...arguments),this.recuperationCommunesEnCours=!1,this.statsLieu=void 0}async onSearch(t){const n="chronodose.fr"===window.location.hostname?"chronodose":"standard";if(e.isByDepartement(t.detail)){const e=t.detail.departement;a.navigateToRendezVousAvecDepartement(e.code_departement,i(e),n)}else{const e=t.detail.commune,o=(await s.current.departementsDisponibles()).find((({code_departement:t})=>t===e.codeDepartement));if(!o)return void console.error(`Can't find departement matching code ${e.codeDepartement}`);a.navigateToRendezVousAvecCommune("distance",o.code_departement,i(o),e.code,e.codePostal,r(e),n)}}render(){return n`
+import{L as t,S as e,R as a,l as i,a as s,b as r,h as n,C as o,c,d,p as l,e as m}from"./index.8ad2c1c2.js";import"./vendor.1d43dcfd.js";var v=Object.defineProperty,p=Object.getOwnPropertyDescriptor,h=(t,e,a,i)=>{for(var s,r=i>1?void 0:i?p(e,a):e,n=t.length-1;n>=0;n--)(s=t[n])&&(r=(i?s(e,a,r):s(r))||r);return i&&r&&v(e,a,r),r};let g=class extends t{constructor(){super(...arguments),this.recuperationCommunesEnCours=!1,this.statsLieu=void 0}async onSearch(t){const n="chronodose.fr"===window.location.hostname?"chronodose":"standard";if(e.isByDepartement(t.detail)){const e=t.detail.departement;a.navigateToRendezVousAvecDepartement(e.code_departement,i(e),n)}else{const e=t.detail.commune,o=(await s.current.departementsDisponibles()).find((({code_departement:t})=>t===e.codeDepartement));if(!o)return void console.error(`Can't find departement matching code ${e.codeDepartement}`);a.navigateToRendezVousAvecCommune("distance",o.code_departement,i(o),e.code,e.codePostal,r(e),n)}}render(){return n`
             <div class="searchAppointment">
                 <div class="searchAppointment-title h1">
                   <slot name="main-title"></slot>
@@ -11,6 +11,10 @@ import{L as t,S as e,R as a,l as i,a as s,b as r,h as n,C as o,c,d,p as l,e as m
                           />
                     </div>
                 </div>
+            </div>
+            <div class="platforms mt-5">
+                <h2 class="text-black-600 text-center mb-5 h1"><strong>⚠️ OBS: Den här webbsidan är arkiverad och visar inte längre uppdaterad information. 💀</strong>
+                </h2>
             </div>
 
             <div class="platforms mt-5">
@@ -49,7 +53,7 @@ import{L as t,S as e,R as a,l as i,a as s,b as r,h as n,C as o,c,d,p as l,e as m
                 </div>
             </div>
         </div>
-        
+
         <slot name="about"></slot>
         `}async connectedCallback(){super.connectedCallback(),this.statsLieu=await s.current.statsLieux()}};g.styles=[o,c,d`
             :host {
